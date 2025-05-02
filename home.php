@@ -60,13 +60,13 @@ $pages = $config['pages'];
         
       
     </nav>
-
-
-
-
     <h2>
         <?php echo $pages[$page] ?? ucfirst($page); ?>
     </h2>
+
+
+
+    
     <div class="video_hold">
         
         <div class="video_wrapper">

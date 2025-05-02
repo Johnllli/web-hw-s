@@ -1,5 +1,7 @@
 <?php 
 
+session_start();
+
 $config = $GLOBALS['config'];
 $page = $GLOBALS['current_page'];
 $pages = $config['pages'];
@@ -17,11 +19,20 @@ try{
     die("Error: " . $e -> getMessage());
 }
 
+$errors = [];
+$success = '';
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $message = trim($_POST['message']);
+    //check 
+    if(empty($message)){
+        $errors[] = "Message cannot be empty";
+    } elseif(strlen($message) > 1000){
+        $errors[] = "Message cannot be more than 1000 characters";
+    }
+
     //if have message
-    if(!empty($message)){
+    if(empty($errors)){
         //see if guest or not
         $is_guest = !isset($_SESSION['user_id']);
         $user_id = $_SESSION['user_id'] ?? NULL;
@@ -36,14 +47,14 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $stmt -> bind_param("iisss", $is_guest, $user_id, $fullname, $user_name, $message);
 
         if($stmt -> execute()){
-            echo "<p>Message Sent!</p>";
+            $_SESSION['success'] = "Message sent successful";
+            header("Location: index.php?page=contact");
+            exit();
         } else{
-            echo "<p>Error: Failed to send</p>";
+            $errors[] = "Failed to send message. Try again.";
         }
 
-    } else{
-        echo "<p>Error: Message is empty</p>";
-    }
+    } 
 
 }
 ?>
@@ -88,16 +99,42 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         <?php echo $pages[$page] ?? ucfirst($page); ?>
     </h2>
 
-    
+    <!-- message part -->
     <div class="message_hold">
         <p>You can leave your message here</p>
         <p>But if you did not logged in you will be consider as Guest</p>
-        <form method="POST" action="">
-            <textarea name="message" placeholder="You can leave your message here." required></textarea>
-            <button type="submit">Submit</button>
+        
+        <?php if(!empty($success)): ?>
+            <div class="success"><?php echo $success ?></div>
+        <?php endif; ?>
+        
+        <?php if(!empty($errors)): ?>
+            <?php foreach($errors as $error): ?>
+                <div class="error"><?php echo $error ?></div>
+            <?php endforeach; ?>
+        <?php endif; ?>
+        <!-- message form -->
+        <form id="messageform" method="POST" action="index.php?page=contact">
+            <textarea name="message"
+            placeholder="You can leave your message here (max 1000 characters)"></textarea>
+        <button type="submit">Submit</button>
         </form>
-    </div>
 
+        
+    </div>
+    <script>
+        document.getElementById('messageform').addEventListener('submit', function(e){
+            const message = 
+            document.querySelector('textarea[name="message"]').value.trim();
+
+            if(message === ''){
+                e.preventDefault(); // Stop form submission
+                alert('Please enter some message before submit');
+                return false;
+            }
+            return true;
+        })
+    </script>
 
 
 </body>

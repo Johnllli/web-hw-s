@@ -83,6 +83,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
     <link type="text/css" rel="stylesheet" href="style.css">
     <style>
@@ -110,28 +112,30 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 <body>
     <h1>Maybe big shop</h1>
     <nav>
-        <div>
-            
+        
+        <ul>
             <?php foreach ($pages as $key => $title): ?>
                 <!-- check if is login show something else -->
                 <?php if($key !== 'login' || !isset($_SESSION['user_id'])):  ?>
-                    <a href="index.php?page=<?php echo $key?>">
-                        <?php echo $title ?>
-                    </a>
+                    <li>
+                        <a href="index.php?page=<?php echo $key?>">
+                            <?php echo $title ?>
+                        </a>
+                    </li>
                 <?php endif; ?>
             <?php endforeach ?>
-
+            
             <?php if(isset($_SESSION['user_id'])): ?>
-                <span>Hello, 
-                    <?= $_SESSION['fullname'] ?>
-                    (<?= $_SESSION['user_name'] ?>)
+                <li class="user-info">
+                    <span>Hello, 
+                        <?= $_SESSION['fullname'] ?>
+                        (<?= $_SESSION['user_name'] ?>)
+                    </span>
                     <a href="logout.php">Logout</a>
-                </span>
-            <?php endif; ?>    
-        </div>
-
-        
-      
+                </li>
+            <?php endif; ?>
+             
+        </ul>
     </nav>
 
 

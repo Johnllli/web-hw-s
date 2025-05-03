@@ -39,7 +39,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $user_name = $_SESSION['user_name'] ?? NULL;
 
         $stmt = $db -> prepare(
-            "INSERT INTO Contact(isguest, user_id, fullname, user_name, message)
+            "INSERT INTO contact(isguest, user_id, fullname, user_name, message)
             values(?, ?, ?, ?, ?)
             "
         );

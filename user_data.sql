@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS user_data;
-use user_data;
+
+
 
 CREATE TABLE IF NOT EXISTS users(
     id INT auto_increment primary key,

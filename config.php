@@ -9,10 +9,10 @@ return [
     ],
     'site_name' => 'Maybe big shop',
     'db' => [
-        'host' => 'localhost',
-        'username' => 'root',
-        'password' => '',
-        'database' => 'user_data'
+        'host' => 'sql111.infinityfree.com',
+        'username' => 'if0_38881175',
+        'password' => 'Vl8JSyPCHONq',
+        'database' => 'if0_38881175_user_data'
     ]
 ];
 ?>

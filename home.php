@@ -27,9 +27,6 @@ $pages = $config['pages'];
             max-width: 300px;
             margin: 20px;
         }
-        .user_info{
-            float: right;
-        }
         .map{
             display: flex;
             flex-direction: column;
@@ -65,7 +62,7 @@ $pages = $config['pages'];
                         <?= $_SESSION['fullname'] ?>
                         (<?= $_SESSION['user_name'] ?>)
                     </span>
-                    <a href="logout.php">Logout</a>
+                    <a class="logout" href="logout.php">Logout</a>
                 </li>
             <?php endif; ?>
              

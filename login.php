@@ -131,7 +131,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                         <?= $_SESSION['fullname'] ?>
                         (<?= $_SESSION['user_name'] ?>)
                     </span>
-                    <a href="logout.php">Logout</a>
+                    <a class="logout" href="logout.php">Logout</a>
                 </li>
             <?php endif; ?>
              

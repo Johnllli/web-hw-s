@@ -131,8 +131,8 @@ while ($row = $result -> fetch_assoc()){
                                         <span>Guest</span>
                                     <?php else: ?>
                                         <span>
-                                            <?= $_SESSION['fullname'] ?>
-                                            (<?= $_SESSION['user_name'] ?>)
+                                            <?= $message['fullname'] ?>
+                                            (<?= $message['user_name'] ?>)
                                         </span>
                                     <?php endif; ?>
                                 </td>

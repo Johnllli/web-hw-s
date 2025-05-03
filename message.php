@@ -44,6 +44,27 @@ while ($row = $result -> fetch_assoc()){
         td{
             margin: 20px;
         }
+        .message_table{
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .message_table th, .message_table td{
+            padding: 15px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        .message_table th{
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        .message_table tr{
+            height: 50px;
+        }
+        .message_table tr:nth-child(even){
+            background-color: #f9f9f9;
+        }
+        
     </style>
 </head>
 

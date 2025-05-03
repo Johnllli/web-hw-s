@@ -30,6 +30,16 @@ $pages = $config['pages'];
         .user_info{
             float: right;
         }
+        .map{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .map p {
+            font-size: 30px;
+        }
     </style>
     
 </head>
@@ -75,6 +85,7 @@ $pages = $config['pages'];
         
         <div class="video_wrapper">
             <h3>Local video</h3>
+            <h3>(because i cannot find a video less then 5 sec)</h3>
             <video controls width="300" height="200">
                 <source src="src/5secvideo.mp4" type="video/mp4">
                 Maybe you brower does not suppor this.
@@ -89,6 +100,11 @@ $pages = $config['pages'];
                     allowfullscreen>
             </iframe>
         </div>
+    </div>
+    
+    <div class="map">
+        <p>Come to visit us</p>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d5047.171882517797!2d-54.67480168881829!3d-63.432641050103975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1szh-CN!2shu!4v1746266901383!5m2!1szh-CN!2shu" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 
 </body>
